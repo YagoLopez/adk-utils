@@ -1,0 +1,60 @@
+{
+  "name": "@yagolopez/adk-utils",
+  "description": "A set of utilities for developing TypeScript agents using Google Agent Development Kit (ADK)",
+  "keywords": [
+    "adk",
+    "adk-tools",
+    "ollama",
+    "google agent development kit",
+    "vercel ai sdk",
+    "ai streaming",
+    "nextjs",
+    "yagolopez",
+    "yago"
+  ],
+  "version": "0.2.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "docs",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint \"src/**/*.ts\"",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage",
+    "release": "standard-version",
+    "release:dry-run": "standard-version --dry-run",
+    "release:publish": "npm run release && npm publish"
+  },
+  "peerDependencies": {
+    "@google/adk": "^0.3.0",
+    "@google/genai": "^1.37.0",
+    "ai": "^6.0.39",
+    "ollama": "^0.6.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@google/adk": "^0.3.0",
+    "@google/genai": "^1.37.0",
+    "@types/jest": "^30.0.0",
+    "@types/lodash": "^4.17.23",
+    "@types/node": "^25.2.1",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "ai": "^6.0.39",
+    "eslint": "^9.39.2",
+    "globals": "^17.3.0",
+    "jest": "^30.2.0",
+    "lodash": "^4.17.23",
+    "ollama": "^0.6.3",
+    "standard-version": "^9.5.0",
+    "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}

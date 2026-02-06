@@ -1,0 +1,22 @@
+# Directorios de desarrollo y herramientas
+.github/
+.vscode/
+node_modules/
+
+# Tests y Cobertura
+test/
+spec/
+*.test.js
+*.spec.js
+coverage/
+
+# Archivos de configuración de herramientas
+.eslintrc.json
+.prettierrc
+tsconfig.json
+jest.config.js
+babel.config.js
+
+# Logs y temporales
+*.log
+.DS_Store
