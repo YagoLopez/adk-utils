@@ -1,42 +1,42 @@
-# Documentación Técnica: Clase `OllamaModel`
+# Technical Documentation: `OllamaModel` Class
 
-La clase `OllamaModel` es una implementación personalizada que extiende `BaseLlm` del Google Agent Development Kit (ADK). Su propósito es permitir la integración fluida de modelos de lenguaje locales o remotos servidos a través de **Ollama** dentro del ecosistema ADK.
+The `OllamaModel` class is a custom implementation that extends `BaseLlm` from the Google Agent Development Kit (ADK). Its purpose is to enable seamless integration of local or remote language models served via **Ollama** within the ADK ecosystem.
 
-## Características Principales
-- Soporte para **Streaming**: Generación de respuestas en tiempo real.
-- Soporte para **Tool Calling**: Integración con funciones externas mediante la API de Ollama.
-- Compatibilidad con el formato de mensajes de Google ADK.
-- Configurable para endpoints locales o remotos.
+## Key Features
+- **Streaming** Support: Real-time response generation.
+- **Tool Calling** Support: Integration with external functions through the Ollama API.
+- Compatibility with Google ADK message formats.
+- Configurable for local or remote endpoints.
 
-## Definición de la Clase
+## Class Definition
 
 ### Constructor
 ```typescript
 constructor(modelName: string = 'qwen3:0.6b', baseURL: string = 'http://localhost:11434/v1')
 ```
-- `modelName`: Nombre del modelo en Ollama (por defecto `qwen3:0.6b`).
-- `baseURL`: URL del servidor Ollama (por defecto apuntando a la API local).
+- `modelName`: Name of the model in Ollama (defaults to `qwen3:0.6b`).
+- `baseURL`: URL of the Ollama server (defaults to pointing to the local API).
 
-### Métodos Públicos
+### Public Methods
 
 #### `generateContentAsync(llmRequest: LlmRequest, stream: boolean = true): AsyncGenerator<LlmResponse, void>`
-Genera contenido basado en una solicitud ADK.
-- **Entrada**: `LlmRequest` que contiene el historial de mensajes, configuración y herramientas.
-- **Salida**: Un generador asíncrono que emite objetos `LlmResponse`.
-- **Lógica**: Convierte los mensajes al formato de Ollama, procesa las definiciones de herramientas y gestiona tanto la respuesta por streaming como la respuesta completa.
+Generates content based on an ADK request.
+- **Input**: `LlmRequest` containing message history, configuration, and tools.
+- **Output**: An asynchronous generator that emits `LlmResponse` objects.
+- **Logic**: Converts messages to Ollama format, processes tool definitions, and manages both streaming and complete responses.
 
 #### `connect(): Promise<BaseLlmConnection>`
-- Método heredado de `BaseLlm`. Actualmente lanza un error ya que las conexiones en vivo persistentes no están soportadas para esta implementación.
+- Inherited method from `BaseLlm`. Currently throws an error as persistent live connections are not supported in this implementation.
 
-### Métodos Privados
+### Private Methods
 
 #### `convertToOllamaMessages(contents: Content[]): OllamaMessage[]`
-Transforma los objetos de contenido de ADK (`Content`) al formato esperado por la librería `ollama`. Maneja roles (user, model/assistant, tool) y extrae llamadas a funciones.
+Transforms ADK content objects (`Content`) into the format expected by the `ollama` library. It handles roles (user, model/assistant, tool) and extracts function calls.
 
 #### `sanitizeSchema(schema: JSONSchema | undefined): JSONSchema | undefined`
-Asegura que los esquemas JSON de las herramientas sean compatibles con Ollama, convirtiendo tipos (como `String` a `string`) a minúsculas.
+Ensures that tool JSON schemas are compatible with Ollama, converting types (such as `String` to `string`) to lowercase.
 
-## Diagrama UML
+## UML Diagram
 
 ```mermaid
 classDiagram
@@ -56,22 +56,22 @@ classDiagram
     BaseLlm <|-- OllamaModel
 ```
 
-## Ejemplo de Uso
+## Usage Example
 
 ```typescript
 import { OllamaModel } from '@yagolopez/adk-utils';
 
 async function main() {
-  // Instanciar el modelo (por defecto usa qwen3:0.6b en localhost)
+  // Instantiate the model (defaults to qwen3:0.6b on localhost)
   const model = new OllamaModel('llama3');
 
   const request = {
     contents: [
-      { role: 'user', parts: [{ text: '¿Qué es el Agent Development Kit de Google?' }] }
+      { role: 'user', parts: [{ text: 'What is Google\'s Agent Development Kit?' }] }
     ]
   };
 
-  console.log('Generando respuesta...');
+  console.log('Generating response...');
 
   for await (const response of model.generateContentAsync(request)) {
     if (response.content?.parts[0] && 'text' in response.content.parts[0]) {
@@ -85,7 +85,7 @@ main().catch(console.error);
 
 ---
 
-## Dependencias
-- `@google/adk`: Provee la clase base y tipos de datos.
-- `ollama`: Cliente oficial de Node.js para interactuar con el servidor Ollama.
-- `@google/genai`: Tipos adicionales para compatibilidad de contenido.
+## Dependencies
+- `@google/adk`: Provides the base class and data types.
+- `ollama`: Official Node.js client for interacting with the Ollama server.
+- `@google/genai`: Additional types for content compatibility.
