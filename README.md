@@ -3,17 +3,21 @@
 [![npm version](https://img.shields.io/npm/v/@yagolopez/adk-utils.svg)](https://www.npmjs.com/package/@yagolopez/adk-utils)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This npm package is a set of utilities for the **Google Agent Development Kit (ADK)** that facilitates the creation of IA Agents using local models with Ollama and Typescript. It also facilitates the management of streaming flows for them.
+This npm package is a set of utilities for the [Google Agent Development Kit (ADK)](https://google.github.io/adk-docs/) that facilitates the creation of IA Agents using local models with Ollama and Typescript. It also facilitates the management of streaming flows for them.
 
 > [Ollama](https://ollama.com) local models can be very convenient during development time to save tokens
 
-The motivation for this package is that Google Agent Development Kit (ADK) provides [a way to define agents based in local ollama for Python](https://google.github.io/adk-docs/agents/models/litellm/#setup) **but not for Typescript.**
+The motivation for this package is that Google Agent Development Kit (ADK) provides [a way to define agents based in local ollama for Python using the library `litellm`](https://google.github.io/adk-docs/agents/models/litellm/#setup) **but there is no way of using local ollama agents if you are using Typescript.**
 
+
+## 💻 Demo
+- https://adk-utils-example.vercel.app
 
 
 ## 🚀 Features
 
 - **OllamaModel**: Custom implementation of ADK's `BaseLlm` to use local Ollama models.
+- **Function calling**: OllamaModel allows to use LLM models with tool calling 
 - **GenAIAgentService**: Modular service to handle agent interactions, with native support for **Streaming** and **Server-Sent Events (SSE)**.
 - **Compatibility**: Designed to work seamlessly with the Vercel AI SDK and the Google GenAI ecosystem.
 
@@ -37,42 +41,45 @@ npm install @google/adk @google/genai ai ollama
 
 ## 🛠️ Usage of OllamaModel
 
-The `OllamaModel` class is flexible and can be used with both **local** instances and **cloud-hosted** Ollama services.
+The `OllamaModel` class can be used with both **local** and **cloud-hosted** Ollama models to create Agents
 
-### Using a Local Ollama Instance
-Supposing Ollama is installed and running locally: `http://localhost:11434/v1` with the model: `qwen3:0.6b`:
+### Using a Local Ollama model
+Supposing Ollama is installed and running locally: `http://localhost:11434/v1` with the model: `qwen3:0.6b` you can create an ADK Agent that uses the **local Ollama** model this way:
 
 ```typescript
+// agent1.ts
+
 import { OllamaModel } from '@yagolopez/adk-utils';
 
-// Create model from local Ollama
-const model = new OllamaModel('qwen3:0.6b', 'http://localhost:11434/v1');
-
-// Use the model with an ADK Agent
+// Create an instance of an ADK model using a local Ollama model
 const agent = new LlmAgent({
   name: 'LocalAgent',
-  model: model,
-  tools: [{...}]
+  model: new OllamaModel('qwen3:0.6b', 'http://localhost:11434/v1'),
+  description: 'Agent description',
+  instruction: `You are a helpful assistant...`,
+  tools: [...],
 });
 ```
 
 ### Using a Cloud-Hosted Ollama Model
-You can specify a custom base URL for cloud-hosted instances (e.g., via a proxy or specialized provider). Make sure to set `OLLAMA_API_KEY` in your environment variables if authentication is required. (For [Ollama Cloud](https://docs.ollama.com/cloud) models, `OLLAMA_API_KEY` can be obtained in https://ollama.com)
+For **cloud-hosted Ollama models** you will need an `OLLAMA_API_KEY`defined in the `.env` file, and pass the following url to the `OllamaModel` constructor: 'https://ollama.com'
+
+> `OLLAMA_API_KEY` can be obtained in https://ollama.com)
+
+Here is an example:
 
 ```typescript
+// agent2.ts
+
 import { OllamaModel } from '@yagolopez/adk-utils';
 
-// Connects to a cloud-hosted Ollama instance
-const model = new OllamaModel(
-  'qwen2.5:0.5b', 
-  'https://ollama.com',  // Or other provider url: 'https://your-cloud-ollama-provider.com/v1'
-);
-
-// Use with an ADK Agent
+// Create an instance of an ADK model using a cloud-hosted Ollama model
 const agent = new LlmAgent({
   name: 'CloudAgent',
-  model: model,
-  tools: [...]
+  model: new OllamaModel('qwen2.5:0.5b', 'https://ollama.com'),
+  description: 'Agent description',
+  instruction: `You are a helpful assistant...`,
+  tools: [...],
 });
 ```
 
@@ -80,9 +87,11 @@ const agent = new LlmAgent({
 
 ## 🛠️ Usage of GenAIAgentService
 
-This package also provides a class service`GenAIAgentService` that simplifies the creation of streaming endpoints (or API routes) in Next.js for ADK agents:
+This package also provides a service called`GenAIAgentService` that simplifies the creation of streaming endpoints (or API routes) in Next.js for ADK agents:
 
 ```typescript
+// route.ts
+
 import { GenAIAgentService, OllamaModel } from '@yagolopez/adk-utils';
 import { LlmAgent } from '@google/adk';
 
@@ -99,14 +108,15 @@ export async function POST(req: Request) {
   	tools: [...],
   });
   
-  // Create agent service to use the agent in the endpoint          
+  // Create agent service to invoke the agent in the endpoint          
   const service = new GenAIAgentService(agent);
 
+  // Check if the messages sent by the user are valid
   if (!service.validateMessages(messages)) {
     return GenAIAgentService.createErrorResponse('Invalid messages', 400);
   }
 
-  // Invoke the agent with the messages from the user and return the response
+  // Invoke the agent with the messages from the user and return the response from the endpoint
   return service.createStreamingResponse(messages);
 }
 ```
@@ -136,7 +146,7 @@ Check the `/docs` directory
 ## 📜 Project Structure
 
 - `src/ollama-model.ts`: LLM provider for Ollama.
-- `src/genai-agent-service.ts`: Negotiation and streaming logic.
+- `src/genai-agent-service.ts`: Porvides streaming logic.
 - `src/index.ts`: Package entry point.
 
 
