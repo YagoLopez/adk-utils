@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ce9d1f-a509-49b2-a76f-7cc2b5f14b9d" name="Changes" comment="Update README and enhance workspace configurations&#10;&#10;Expanded the README with more detailed information and added a demo link for better accessibility. Refined `.idea/workspace.xml` to include updated IntelliJ and Node.js-specific configurations for streamlined workflows.">
+    <list default="true" id="69ce9d1f-a509-49b2-a76f-7cc2b5f14b9d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +13,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -22,12 +26,22 @@
     &quot;assignee&quot;: &quot;YagoLopez&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/YagoLopez/adk-utils.git&quot;,
-    &quot;accountId&quot;: &quot;7b3e3dca-054f-4627-840f-b32255aed16e&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/YagoLopez/adk-utils.git",
+    "accountId": "7b3e3dca-054f-4627-840f-b32255aed16e"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "YagoLopez",
+    "repository": "adk-utils"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -42,38 +56,49 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yago/WebstormProjects/adk-utils&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
-    &quot;npm.prepublishOnly.executor&quot;: &quot;Run&quot;,
-    &quot;npm.release:dry-run.executor&quot;: &quot;Run&quot;,
-    &quot;npm.release:publish.executor&quot;: &quot;Run&quot;,
-    &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;npm.test:coverage.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Yago\\WebstormProjects\\adk-utils\\node_modules\\typescript\\lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "#1 on update-deps",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Yago/WebstormProjects/adk-utils",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.lint.executor": "Run",
+    "npm.prepublishOnly.executor": "Run",
+    "npm.release:dry-run.executor": "Run",
+    "npm.release:publish.executor": "Run",
+    "npm.test.executor": "Run",
+    "npm.test:coverage.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\Yago\\WebstormProjects\\adk-utils\\node_modules\\typescript\\lib"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Yago\WebstormProjects\adk-utils" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.release:publish">
+  <component name="RunManager" selected="npm.test:coverage">
     <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="lint" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="prepublishOnly" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="prepublishOnly" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -99,16 +124,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="test" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="test:coverage" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -121,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.release:publish" />
-        <item itemvalue="npm.release:dry-run" />
-        <item itemvalue="npm.test" />
         <item itemvalue="npm.test:coverage" />
         <item itemvalue="npm.lint" />
+        <item itemvalue="npm.release:publish" />
+        <item itemvalue="npm.release:dry-run" />
+        <item itemvalue="npm.prepublishOnly" />
       </list>
     </recent_temporary>
   </component>
@@ -167,6 +182,7 @@
     <MESSAGE value="Add VCS configuration and refine documentation&#10;&#10;Added IntelliJ VCS-related configurations to project settings and updated workspace XML with Git settings. Additionally, standardized the technical documentation for the `OllamaModel` class and renamed related files for improved clarity." />
     <MESSAGE value="Add CI workflow and enhance workspace configuration&#10;&#10;Introduced a GitHub Actions CI workflow for linting and test coverage. Updated `.idea/workspace.xml` with IntelliJ settings for Git, VCS, and recent configurations. Also added Node.js-specific configurations to streamline project workflows." />
     <MESSAGE value="Update README and enhance workspace configurations&#10;&#10;Expanded the README with more detailed information and added a demo link for better accessibility. Refined `.idea/workspace.xml` to include updated IntelliJ and Node.js-specific configurations for streamlined workflows." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update README and enhance workspace configurations&#10;&#10;Expanded the README with more detailed information and added a demo link for better accessibility. Refined `.idea/workspace.xml` to include updated IntelliJ and Node.js-specific configurations for streamlined workflows." />
+    <MESSAGE value="Update README and refine workspace configurations&#10;&#10;Enhanced the README by adding detailed usage instructions, examples, and a demo link for better accessibility. Improved `.idea/workspace.xml` with updated IntelliJ and Node.js-specific settings, optimizing developer workflows." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update README and refine workspace configurations&#10;&#10;Enhanced the README by adding detailed usage instructions, examples, and a demo link for better accessibility. Improved `.idea/workspace.xml` with updated IntelliJ and Node.js-specific settings, optimizing developer workflows." />
   </component>
 </project>
