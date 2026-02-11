@@ -83,7 +83,7 @@
       <recent name="C:\Users\Yago\WebstormProjects\adk-utils" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.release:publish">
+  <component name="RunManager" selected="npm.test:coverage">
     <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -136,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.test:coverage" />
+        <item itemvalue="npm.lint" />
         <item itemvalue="npm.release:publish" />
         <item itemvalue="npm.release:dry-run" />
-        <item itemvalue="npm.lint" />
         <item itemvalue="npm.prepublishOnly" />
-        <item itemvalue="npm.test:coverage" />
       </list>
     </recent_temporary>
   </component>
