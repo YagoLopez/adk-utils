@@ -7,7 +7,7 @@ This npm package is a set of utilities for the [Google Agent Development Kit (AD
 
 > [Ollama](https://ollama.com) local models can be very convenient during development time to save tokens
 
-The motivation for this package is that Google Agent Development Kit (ADK) provides [a way to define agents based in local ollama for Python using the library `litellm`](https://google.github.io/adk-docs/agents/models/litellm/#setup) **but there is no way of using local ollama agents if you are using Typescript.**
+The motivation for this package is that Google Agent Development Kit (ADK) provides [a way to define agents based in local models for Python using the library `litellm`](https://google.github.io/adk-docs/agents/models/litellm/#setup) **but there is no way of using local ollama models if you are using Typescript.**
 
 
 ## 💻 Demo
@@ -35,6 +35,8 @@ npm install @yagolopez/adk-utils
 
 ```bash
 npm install @google/adk @google/genai ai ollama
+
+# IMPORTANT: Use the latest versions of this packages to avoid conflicts
 ```
 
 
@@ -48,8 +50,10 @@ Supposing Ollama is installed and running locally: `http://localhost:11434/v1` w
 
 ```typescript
 // agent1.ts
+// (install @google/adk if you dont have this package)
 
-import { OllamaModel } from '@yagolopez/adk-utils';
+import {OllamaModel} from '@yagolopez/adk-utils';
+import {LlmAgent} from '@google/adk';
 
 // Create an instance of an ADK model using a local Ollama model
 const agent = new LlmAgent({
@@ -70,8 +74,10 @@ Here is an example:
 
 ```typescript
 // agent2.ts
+// (install @google/adk if you dont have this package)
 
-import { OllamaModel } from '@yagolopez/adk-utils';
+import {OllamaModel} from '@yagolopez/adk-utils';
+import {LlmAgent} from '@google/adk';
 
 // Create an instance of an ADK model using a cloud-hosted Ollama model
 const agent = new LlmAgent({
@@ -91,6 +97,7 @@ This package also provides a service called`GenAIAgentService` that simplifies t
 
 ```typescript
 // route.ts
+// (install @google/adk if you dont have this package)
 
 import { GenAIAgentService, OllamaModel } from '@yagolopez/adk-utils';
 import { LlmAgent } from '@google/adk';
@@ -101,11 +108,11 @@ export async function POST(req: Request) {
     
   // Create instance of ADK agent  
   const agent = new LlmAgent({
-    name: 'my-agent',
-  	model: new OllamaModel('qwen2.5:0.5b', 'https://ollama.com'),
-   	description: 'Agent description',
-  	instruction: `You are a helpful assistant...`,
-  	tools: [...],
+      name: 'my-agent',
+  	  model: new OllamaModel('qwen2.5:0.5b', 'https://ollama.com'),
+   	  description: 'Agent description',
+  	  instruction: `You are a helpful assistant...`,
+  	  tools: [...],
   });
   
   // Create agent service to invoke the agent in the endpoint          
@@ -116,7 +123,7 @@ export async function POST(req: Request) {
     return GenAIAgentService.createErrorResponse('Invalid messages', 400);
   }
 
-  // Invoke the agent with the messages from the user and return the response from the endpoint
+  // Invoke the agent with messages from the user and return the agent response in stream format
   return service.createStreamingResponse(messages);
 }
 ```
