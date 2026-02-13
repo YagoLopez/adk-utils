@@ -1,6 +1,5 @@
 // todo: allow local ollama with docker
 // todo: rate liminting for demo purposes
-// todo: update docs for mockModel class
 
 import { BaseLlm, BaseLlmConnection, LlmRequest, LlmResponse } from '@google/adk';
 import { Ollama, type Tool as OllamaTool, type Message as OllamaMessage, type ChatRequest } from 'ollama';
