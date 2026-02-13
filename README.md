@@ -91,111 +91,9 @@ const agent = new LlmAgent({
 ```
 
 
+## 🛠️ GenAIAgentService
 
-## 🛠️ Usage of MockModel
-
-The `MockModel` class is a mock implementation of ADK's `BaseLlm` designed for testing and development. It allows you to simulate LLM responses with custom chunks and delays without making real API calls.
-
-```typescript
-import { MockModel } from '@yagolopez/adk-utils';
-import { LlmAgent } from '@google/adk';
-
-// Create a mock model with custom response chunks and delay
-const mockModel = new MockModel(
-  'test-model', 
-  50, // 50ms delay between chunks
-  ['Hello', ' this is', ' a mock response']
-);
-
-const agent = new LlmAgent({
-  name: 'MockAgent',
-  model: mockModel,
-  description: 'Testing Agent',
-  instruction: 'You are a test agent',
-});
-```
-
-You can also dynamically change the mock response and delay:
-
-```typescript
-mockModel.setMockResponse(['New', ' custom', ' response']);
-mockModel.setResponseDelay(100);
-```
-
-
-### 🧪 Using MockModel in Playwright E2E tests
-
-`MockModel` is particularly useful for Playwright end-to-end tests because it allows you to test your application's UI and agent logic without needing a running Ollama instance or incurring API costs.
-
-#### 1. Implement a Model Factory
-
-Create a factory to switch between the real model and the mock model based on an environment variable:
-
-```typescript
-// model-factory.ts
-import { OllamaModel, MockModel } from '@yagolopez/adk-utils';
-
-export function getLlmModel() {
-  const isTestMode = process.env.NEXT_PUBLIC_MOCK_LLM === 'true' || process.env.NODE_ENV === 'test';
-  
-  if (isTestMode) {
-    return new MockModel('mock-model', 100, [
-      'This is a ',
-      'mocked response ',
-      'for Playwright tests.'
-    ]);
-  }
-  
-  return new OllamaModel('qwen2.5:0.5b', 'http://localhost:11434/v1');
-}
-```
-
-#### 2. Configure Playwright to use the Mock
-
-In your `playwright.config.ts`, you can set the environment variable that your application reads:
-
-```typescript
-import { defineConfig } from '@playwright/test';
-
-export default defineConfig({
-  // ... other config
-  use: {
-    baseURL: 'http://localhost:3000',
-  },
-  webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:3000',
-    env: {
-      NEXT_PUBLIC_MOCK_LLM: 'true',
-    },
-    reuseExistingServer: !process.env.CI,
-  },
-});
-```
-
-#### 3. Write your E2E test
-
-Now your tests will run instantly with predictable responses:
-
-```typescript
-import { test, expect } from '@playwright/test';
-
-test('Agent response is displayed in the UI', async ({ page }) => {
-  await page.goto('/');
-  
-  const input = page.getByPlaceholder('Type a message...');
-  await input.fill('Hello Agent!');
-  await input.press('Enter');
-
-  // Verify the mock response appears
-  await expect(page.locator('.message-content')).toContainText('for Playwright tests.');
-});
-```
-
-
-## 🛠️ Usage of GenAIAgentService
-
-This package also provides a service called`GenAIAgentService` that simplifies the creation of streaming endpoints (or API routes) in Next.js for ADK agents:
+This package also provides a service called `GenAIAgentService` that simplifies the creation of streaming endpoints (or API routes) in **Next.js** for ADK agents:
 
 ```typescript
 // route.ts
@@ -232,7 +130,94 @@ export async function POST(req: Request) {
 
 
 
-## 🧪 Testing
+
+
+## 🛠️ MockModel
+
+The package also includes the `MockModel` class which is a mock implementation of ADK's `BaseLlm` designed for testing and development. It allows you to simulate LLM responses with custom chunks and delays without making real API calls.
+
+```typescript
+import { MockModel } from '@yagolopez/adk-utils';
+import { LlmAgent } from '@google/adk';
+
+// Create a mock model with custom response chunks and delay
+const mockModel = new MockModel(
+    'test-model', 
+    50, // 50ms delay between chunks
+    ['Hello', ' this is', ' a mock response']
+);
+
+const agent = new LlmAgent({
+    name: 'MockAgent',
+    model: mockModel,
+    description: 'Testing Agent',
+    instruction: 'You are a test agent',
+});
+```
+
+You can also dynamically change the mock response and delay:
+
+```typescript
+mockModel.setMockResponse(['New', ' custom', ' response']);
+mockModel.setResponseDelay(100);
+```
+
+
+### 🧪 Using MockModel in Playwright E2E tests
+
+`MockModel` is particularly useful for **Playwright** end-to-end tests because it allows you to test your application's UI and agent logic without needing a running Ollama instance or incurring in API costs.
+
+This is an example of a playwright test using MockModel:
+
+```typescript
+// example.spec.ts
+
+mport { test, expect } from "@playwright/test";
+import { MockModel, GenAIAgentService } from "@yagolopez/adk-utils";
+import { LlmAgent } from "@google/adk";
+
+test.describe("Chat Functionality", () => {
+  test("user can send a message and receive a response", async ({ page }) => {
+    await page.route("/api/genai-agent", async (route) => {
+      const { messages } = route.request().postDataJSON();
+
+      // Create agent with mock model
+      const agent = new LlmAgent({
+        name: "test_agent",
+        description: "test-description",
+        model: new MockModel("mock-model", 0, ["Response from mock model"]), 👈
+        instruction: "You are a test agent.",
+      });
+
+      const service = new GenAIAgentService(agent);
+      const response = service.createStreamingResponse(messages);
+      const bodyBuffer = await response.arrayBuffer();
+
+      await route.fulfill({
+        status: response.status,
+        headers: Object.fromEntries(response.headers.entries()),
+        contentType:
+          response.headers.get("content-type") || "text/event-stream",
+        body: Buffer.from(bodyBuffer),
+      });
+    });
+
+    await page.goto("/");
+
+    const input = page.getByPlaceholder("Ask the agent...");
+    await input.fill("hola");
+
+    const sendButton = page.getByRole("button", { name: "Send message" });
+    await sendButton.click();
+
+    await expect(page.getByText("Response from mock model")).toBeVisible();
+  });
+});
+```
+
+
+
+## 🧪 Unit Testing
 
 The package includes a comprehensive suite of unit tests using Jest.
 

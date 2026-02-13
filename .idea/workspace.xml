@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ce9d1f-a509-49b2-a76f-7cc2b5f14b9d" name="Changes" comment="Rename MockLlm to MockModel for clarity&#10;&#10;Replaces all occurrences of &quot;MockLlm&quot; with &quot;MockModel&quot; to better reflect the class's purpose. Updates references across source files, tests, exports, and documentation accordingly for consistency.">
-      <change afterPath="$PROJECT_DIR$/dist/mock-model.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/mock-model.test.d.ts" afterDir="false" />
+    <list default="true" id="69ce9d1f-a509-49b2-a76f-7cc2b5f14b9d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mock-llm.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mock-llm.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mock-llm.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mock-model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mock-llm.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mock-model.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/ollama-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ollama-model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mock-llm.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mock-model.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mock-llm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mock-model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ollama-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ollama-model.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,6 +194,7 @@
     <MESSAGE value="Update README and refine workspace configurations&#10;&#10;Enhanced the README by adding detailed usage instructions, examples, and a demo link for better accessibility. Improved `.idea/workspace.xml` with updated IntelliJ and Node.js-specific settings, optimizing developer workflows." />
     <MESSAGE value="Add MockLlm for testing with streaming and non-streaming modes&#10;&#10;Introduced a new `MockLlm` class in `src/mock-llm.ts` for simulating LLM responses, enabling configurable streaming or non-streaming behavior. Added corresponding tests and integrated `MockLlm` into exports in `index.ts` and package scripts." />
     <MESSAGE value="Add MockLlm class for testing LLM responses&#10;&#10;Introduced a configurable MockLlm class to simulate streaming and non-streaming LLM responses, aiding testing without dependencies. Added tests, updated exports in `index.ts`, and integrated into package scripts." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add MockLlm class for testing LLM responses&#10;&#10;Introduced a configurable MockLlm class to simulate streaming and non-streaming LLM responses, aiding testing without dependencies. Added tests, updated exports in `index.ts`, and integrated into package scripts." />
+    <MESSAGE value="Rename MockLlm to MockModel for clarity&#10;&#10;Replaces all occurrences of &quot;MockLlm&quot; with &quot;MockModel&quot; to better reflect the class's purpose. Updates references across source files, tests, exports, and documentation accordingly for consistency." />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename MockLlm to MockModel for clarity&#10;&#10;Replaces all occurrences of &quot;MockLlm&quot; with &quot;MockModel&quot; to better reflect the class's purpose. Updates references across source files, tests, exports, and documentation accordingly for consistency." />
   </component>
 </project>
