@@ -1,21 +1,21 @@
-import { MockLlm } from './mock-llm';
+import { MockModel } from './mock-model';
 import { LlmRequest, LlmResponse } from '@google/adk';
 
-describe('MockLlm', () => {
-  let mockLlm: MockLlm;
+describe('MockModel', () => {
+  let mockModel: MockModel;
 
   beforeEach(() => {
-    mockLlm = new MockLlm();
+    mockModel = new MockModel();
   });
 
   it('should initialize with default values', () => {
-    expect(mockLlm).toBeDefined();
+    expect(mockModel).toBeDefined();
     // Access private property for testing if needed, or rely on behavior
   });
 
   it('should generate content in streaming mode', async () => {
     const request = {} as LlmRequest;
-    const generator = mockLlm.generateContentAsync(request, true);
+    const generator = mockModel.generateContentAsync(request, true);
     const results: LlmResponse[] = [];
 
     for await (const result of generator) {
@@ -29,7 +29,7 @@ describe('MockLlm', () => {
 
   it('should generate content in non-streaming mode', async () => {
     const request = {} as LlmRequest;
-    const generator = mockLlm.generateContentAsync(request, false);
+    const generator = mockModel.generateContentAsync(request, false);
     const results: LlmResponse[] = [];
 
     for await (const result of generator) {
@@ -41,9 +41,9 @@ describe('MockLlm', () => {
   });
 
   it('should allow updating mock responses', async () => {
-    mockLlm.setMockResponse(['New', ' ', 'Response']);
+    mockModel.setMockResponse(['New', ' ', 'Response']);
     const request = {} as LlmRequest;
-    const generator = mockLlm.generateContentAsync(request, true);
+    const generator = mockModel.generateContentAsync(request, true);
     const results: LlmResponse[] = [];
 
     for await (const result of generator) {
@@ -55,6 +55,6 @@ describe('MockLlm', () => {
   });
 
   it('should throw error on connect', () => {
-    expect(() => mockLlm.connect()).toThrow('Live connections are not supported for MockLlm');
+    expect(() => mockModel.connect()).toThrow('Live connections are not supported for MockModel');
   });
 });

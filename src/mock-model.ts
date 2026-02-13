@@ -5,7 +5,7 @@ import type { Part } from '@google/genai';
  * Mock LLM implementation for testing purposes.
  * Allows simulating streaming and non-streaming responses without external dependencies.
  */
-export class MockLlm extends BaseLlm {
+export class MockModel extends BaseLlm {
   private responseChunks: string[];
   private responseDelay: number;
 
@@ -36,7 +36,7 @@ export class MockLlm extends BaseLlm {
   }
 
   connect(): Promise<BaseLlmConnection> {
-    throw new Error('Live connections are not supported for MockLlm');
+    throw new Error('Live connections are not supported for MockModel');
   }
 
   async *generateContentAsync(

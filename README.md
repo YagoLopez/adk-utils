@@ -17,6 +17,7 @@ The motivation for this package is that Google Agent Development Kit (ADK) provi
 ## 🚀 Features
 
 - **OllamaModel**: Custom implementation of ADK's `BaseLlm` to use local Ollama models.
+- **MockModel**: Mock implementation of `BaseLlm` for testing and development without API costs or dependencies.
 - **Function calling**: OllamaModel allows to use LLM models with tool calling 
 - **GenAIAgentService**: Modular service to handle agent interactions, with native support for **Streaming** and **Server-Sent Events (SSE)**.
 - **Compatibility**: Designed to work seamlessly with the Vercel AI SDK and the Google GenAI ecosystem.
@@ -91,6 +92,107 @@ const agent = new LlmAgent({
 
 
 
+## 🛠️ Usage of MockModel
+
+The `MockModel` class is a mock implementation of ADK's `BaseLlm` designed for testing and development. It allows you to simulate LLM responses with custom chunks and delays without making real API calls.
+
+```typescript
+import { MockModel } from '@yagolopez/adk-utils';
+import { LlmAgent } from '@google/adk';
+
+// Create a mock model with custom response chunks and delay
+const mockModel = new MockModel(
+  'test-model', 
+  50, // 50ms delay between chunks
+  ['Hello', ' this is', ' a mock response']
+);
+
+const agent = new LlmAgent({
+  name: 'MockAgent',
+  model: mockModel,
+  description: 'Testing Agent',
+  instruction: 'You are a test agent',
+});
+```
+
+You can also dynamically change the mock response and delay:
+
+```typescript
+mockModel.setMockResponse(['New', ' custom', ' response']);
+mockModel.setResponseDelay(100);
+```
+
+
+### 🧪 Using MockModel in Playwright E2E tests
+
+`MockModel` is particularly useful for Playwright end-to-end tests because it allows you to test your application's UI and agent logic without needing a running Ollama instance or incurring API costs.
+
+#### 1. Implement a Model Factory
+
+Create a factory to switch between the real model and the mock model based on an environment variable:
+
+```typescript
+// model-factory.ts
+import { OllamaModel, MockModel } from '@yagolopez/adk-utils';
+
+export function getLlmModel() {
+  const isTestMode = process.env.NEXT_PUBLIC_MOCK_LLM === 'true' || process.env.NODE_ENV === 'test';
+  
+  if (isTestMode) {
+    return new MockModel('mock-model', 100, [
+      'This is a ',
+      'mocked response ',
+      'for Playwright tests.'
+    ]);
+  }
+  
+  return new OllamaModel('qwen2.5:0.5b', 'http://localhost:11434/v1');
+}
+```
+
+#### 2. Configure Playwright to use the Mock
+
+In your `playwright.config.ts`, you can set the environment variable that your application reads:
+
+```typescript
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  // ... other config
+  use: {
+    baseURL: 'http://localhost:3000',
+  },
+  webServer: {
+    command: 'npm run dev',
+    url: 'http://localhost:3000',
+    env: {
+      NEXT_PUBLIC_MOCK_LLM: 'true',
+    },
+    reuseExistingServer: !process.env.CI,
+  },
+});
+```
+
+#### 3. Write your E2E test
+
+Now your tests will run instantly with predictable responses:
+
+```typescript
+import { test, expect } from '@playwright/test';
+
+test('Agent response is displayed in the UI', async ({ page }) => {
+  await page.goto('/');
+  
+  const input = page.getByPlaceholder('Type a message...');
+  await input.fill('Hello Agent!');
+  await input.press('Enter');
+
+  // Verify the mock response appears
+  await expect(page.locator('.message-content')).toContainText('for Playwright tests.');
+});
+```
+
+
 ## 🛠️ Usage of GenAIAgentService
 
 This package also provides a service called`GenAIAgentService` that simplifies the creation of streaming endpoints (or API routes) in Next.js for ADK agents:
@@ -153,6 +255,7 @@ Check the `/docs` directory
 ## 📜 Project Structure
 
 - `src/ollama-model.ts`: LLM provider for Ollama.
+- `src/mock-model.ts`: Mock LLM implementation for testing.
 - `src/genai-agent-service.ts`: Porvides streaming logic.
 - `src/index.ts`: Package entry point.
 

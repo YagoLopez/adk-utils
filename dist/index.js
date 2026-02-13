@@ -16,4 +16,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./ollama-model"), exports);
 __exportStar(require("./genai-agent-service"), exports);
-__exportStar(require("./mock-llm"), exports);
+__exportStar(require("./mock-model"), exports);

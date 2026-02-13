@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MockLlm = void 0;
+exports.MockModel = void 0;
 const adk_1 = require("@google/adk");
 /**
  * Mock LLM implementation for testing purposes.
  * Allows simulating streaming and non-streaming responses without external dependencies.
  */
-class MockLlm extends adk_1.BaseLlm {
+class MockModel extends adk_1.BaseLlm {
     constructor(modelName = 'mock-model', delay = 0, chunks = ["Hello", " world", "!"]) {
         super({ model: modelName });
         this.responseChunks = chunks;
@@ -27,7 +27,7 @@ class MockLlm extends adk_1.BaseLlm {
         this.responseDelay = delayMs;
     }
     connect() {
-        throw new Error('Live connections are not supported for MockLlm');
+        throw new Error('Live connections are not supported for MockModel');
     }
     async *generateContentAsync(llmRequest, stream = true) {
         // Simulate processing time if needed
@@ -61,4 +61,4 @@ class MockLlm extends adk_1.BaseLlm {
         }
     }
 }
-exports.MockLlm = MockLlm;
+exports.MockModel = MockModel;

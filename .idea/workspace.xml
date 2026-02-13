@@ -4,18 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ce9d1f-a509-49b2-a76f-7cc2b5f14b9d" name="Changes" comment="Add MockLlm for testing with streaming and non-streaming modes&#10;&#10;Introduced a new `MockLlm` class in `src/mock-llm.ts` for simulating LLM responses, enabling configurable streaming or non-streaming behavior. Added corresponding tests and integrated `MockLlm` into exports in `index.ts` and package scripts.">
-      <change afterPath="$PROJECT_DIR$/dist/mock-llm.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/mock-llm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/mock-llm.test.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/mock-llm.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mock-llm.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mock-llm.ts" afterDir="false" />
+    <list default="true" id="69ce9d1f-a509-49b2-a76f-7cc2b5f14b9d" name="Changes" comment="Rename MockLlm to MockModel for clarity&#10;&#10;Replaces all occurrences of &quot;MockLlm&quot; with &quot;MockModel&quot; to better reflect the class's purpose. Updates references across source files, tests, exports, and documentation accordingly for consistency.">
+      <change afterPath="$PROJECT_DIR$/dist/mock-model.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/mock-model.test.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/mock-llm.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mock-llm.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/mock-llm.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mock-model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/mock-llm.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mock-model.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ollama-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ollama-model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mock-llm.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mock-model.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mock-llm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mock-model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ollama-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ollama-model.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +71,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Jest.MockLlm.executor": "Run",
+    "Jest.MockModel.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -97,7 +100,7 @@
       <recent name="C:\Users\Yago\WebstormProjects\adk-utils" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.lint">
+  <component name="RunManager" selected="npm.test">
     <configuration name="MockLlm" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -107,6 +110,18 @@
       <test-file value="$PROJECT_DIR$/src/mock-llm.test.ts" />
       <test-names>
         <test-name value="MockLlm" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="MockModel" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/mock-model.test.ts" />
+      <test-names>
+        <test-name value="MockModel" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -120,21 +135,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="release:publish" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="release:publish" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="test:coverage" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="test:coverage" />
+        <script value="test" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -152,11 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.test" />
+        <item itemvalue="Jest.MockModel" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.watch" />
         <item itemvalue="Jest.MockLlm" />
-        <item itemvalue="npm.test:coverage" />
-        <item itemvalue="npm.release:publish" />
       </list>
     </recent_temporary>
   </component>
@@ -200,6 +205,7 @@
     <MESSAGE value="Update README and enhance workspace configurations&#10;&#10;Expanded the README with more detailed information and added a demo link for better accessibility. Refined `.idea/workspace.xml` to include updated IntelliJ and Node.js-specific configurations for streamlined workflows." />
     <MESSAGE value="Update README and refine workspace configurations&#10;&#10;Enhanced the README by adding detailed usage instructions, examples, and a demo link for better accessibility. Improved `.idea/workspace.xml` with updated IntelliJ and Node.js-specific settings, optimizing developer workflows." />
     <MESSAGE value="Add MockLlm for testing with streaming and non-streaming modes&#10;&#10;Introduced a new `MockLlm` class in `src/mock-llm.ts` for simulating LLM responses, enabling configurable streaming or non-streaming behavior. Added corresponding tests and integrated `MockLlm` into exports in `index.ts` and package scripts." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add MockLlm for testing with streaming and non-streaming modes&#10;&#10;Introduced a new `MockLlm` class in `src/mock-llm.ts` for simulating LLM responses, enabling configurable streaming or non-streaming behavior. Added corresponding tests and integrated `MockLlm` into exports in `index.ts` and package scripts." />
+    <MESSAGE value="Add MockLlm class for testing LLM responses&#10;&#10;Introduced a configurable MockLlm class to simulate streaming and non-streaming LLM responses, aiding testing without dependencies. Added tests, updated exports in `index.ts`, and integrated into package scripts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add MockLlm class for testing LLM responses&#10;&#10;Introduced a configurable MockLlm class to simulate streaming and non-streaming LLM responses, aiding testing without dependencies. Added tests, updated exports in `index.ts`, and integrated into package scripts." />
   </component>
 </project>

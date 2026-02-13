@@ -1,3 +1,3 @@
 export * from './ollama-model';
 export * from './genai-agent-service';
-export * from './mock-llm';
+export * from './mock-model';

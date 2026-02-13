@@ -1,18 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const mock_llm_1 = require("./mock-llm");
-describe('MockLlm', () => {
-    let mockLlm;
+const mock_model_1 = require("./mock-model");
+describe('MockModel', () => {
+    let mockModel;
     beforeEach(() => {
-        mockLlm = new mock_llm_1.MockLlm();
+        mockModel = new mock_model_1.MockModel();
     });
     it('should initialize with default values', () => {
-        expect(mockLlm).toBeDefined();
+        expect(mockModel).toBeDefined();
         // Access private property for testing if needed, or rely on behavior
     });
     it('should generate content in streaming mode', async () => {
         const request = {};
-        const generator = mockLlm.generateContentAsync(request, true);
+        const generator = mockModel.generateContentAsync(request, true);
         const results = [];
         for await (const result of generator) {
             results.push(result);
@@ -23,7 +23,7 @@ describe('MockLlm', () => {
     });
     it('should generate content in non-streaming mode', async () => {
         const request = {};
-        const generator = mockLlm.generateContentAsync(request, false);
+        const generator = mockModel.generateContentAsync(request, false);
         const results = [];
         for await (const result of generator) {
             results.push(result);
@@ -32,9 +32,9 @@ describe('MockLlm', () => {
         expect(results[0].content?.parts?.[0].text).toBe('Hello world!');
     });
     it('should allow updating mock responses', async () => {
-        mockLlm.setMockResponse(['New', ' ', 'Response']);
+        mockModel.setMockResponse(['New', ' ', 'Response']);
         const request = {};
-        const generator = mockLlm.generateContentAsync(request, true);
+        const generator = mockModel.generateContentAsync(request, true);
         const results = [];
         for await (const result of generator) {
             results.push(result);
@@ -43,6 +43,6 @@ describe('MockLlm', () => {
         expect(results[0].content?.parts?.[0].text).toBe('New');
     });
     it('should throw error on connect', () => {
-        expect(() => mockLlm.connect()).toThrow('Live connections are not supported for MockLlm');
+        expect(() => mockModel.connect()).toThrow('Live connections are not supported for MockModel');
     });
 });
