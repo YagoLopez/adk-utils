@@ -1,7 +1,6 @@
 "use strict";
 // todo: allow local ollama with docker
 // todo: rate liminting for demo purposes
-// todo: update docs for mockModel class
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OllamaModel = void 0;
 const adk_1 = require("@google/adk");
