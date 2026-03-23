@@ -1,5 +1,5 @@
 import type { Content, Part, FunctionDeclaration as GenAIFunctionDeclaration } from '@google/genai';
-import type { ToolUnion, BaseTool, LlmRequest, ToolContext, LlmAgent, BaseLlm } from '@google/adk';
+import type { ToolUnion, BaseTool, LlmRequest, Context, LlmAgent, BaseLlm } from '@google/adk';
 import { UIMessage } from 'ai';
 
 // Type definitions for streaming and SSE
@@ -186,7 +186,7 @@ export class GenAIAgentService {
     try {
       return await tool.runAsync({
         args,
-        toolContext: {} as unknown as ToolContext // Minimal context
+        toolContext: {} as Context // Minimal context
       }) as Record<string, unknown>;
     } catch (e) {
       return { error: String(e) };
