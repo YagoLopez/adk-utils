@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acb26c98-d9fd-411c-8c32-3f121bd63230" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +61,7 @@
     "npm.release:publish.executor": "Run",
     "npm.test.executor": "Run",
     "settings.editor.selected.configurable": "com.anthropic.code.plugin.settings",
-    "ts.external.directory.path": "C:\\Users\\Yago\\WebstormProjects\\adk-utils\\node_modules\\typescript\\lib"
+    "ts.external.directory.path": "C:\\Users\\Yago\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
   }
 }]]></component>
   <component name="RunManager" selected="npm.release:dry-run">
@@ -119,9 +118,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.release:dry-run" />
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.test" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.release:publish" />
       </list>
     </recent_temporary>
@@ -139,7 +138,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Remove `.idea/workspace.xml` from version control&#10;&#10;Deleted the IDE-specific `.idea/workspace.xml` file to avoid committing user-specific configuration files. This improves repository cleanliness and prevents potential conflicts in development environments." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove `.idea/workspace.xml` from version control&#10;&#10;Deleted the IDE-specific `.idea/workspace.xml` file to avoid committing user-specific configuration files. This improves repository cleanliness and prevents potential conflicts in development environments." />
+    <MESSAGE value="Update dependencies and add new peer modules  &#10;&#10;Upgraded several dependencies including `@google/adk` to v0.6.0, `ai` to v6.0.140, and `@ai-sdk/gateway` to v3.0.82. Added new peer modules such as `express` and related dependencies to enhance functionality. Adjustments ensure compatibility and introduce new features." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update dependencies and add new peer modules  &#10;&#10;Upgraded several dependencies including `@google/adk` to v0.6.0, `ai` to v6.0.140, and `@ai-sdk/gateway` to v3.0.82. Added new peer modules such as `express` and related dependencies to enhance functionality. Adjustments ensure compatibility and introduce new features." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
