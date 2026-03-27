@@ -12,7 +12,7 @@
     "yagolopez",
     "yago"
   ],
-  "version": "0.2.5",
+  "version": "0.2.7",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -28,15 +28,19 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
-    "release": "standard-version",
-    "release:dry-run": "standard-version --dry-run",
+    "release": "commit-and-tag-version",
+    "release:dry-run": "commit-and-tag-version --dry-run",
     "release:publish": "npm run release && npm publish"
   },
   "peerDependencies": {
-    "@google/adk": "^0.5.0",
+    "@google/adk": "^0.6.0",
     "@google/genai": "^1.46.0",
-    "ai": "^6.0.137",
+    "ai": "^6.0.140",
     "ollama": "^0.6.3"
+  },
+  "overrides": {
+    "tar": "^7.5.11",
+    "@tootallnate/once": "^3.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
@@ -45,12 +49,11 @@
     "@types/node": "^25.2.1",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.54.0",
+    "commit-and-tag-version": "^12.7.1",
     "eslint": "^9.39.2",
     "globals": "^17.3.0",
     "jest": "^30.2.0",
     "lodash": "^4.17.23",
-    "ollama": "^0.6.3",
-    "standard-version": "^9.5.0",
     "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
     "typescript": "^5"

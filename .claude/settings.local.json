@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout:*)",
+      "Bash(npm update:*)",
+      "Bash(npm run:*)",
+      "Bash(npm test:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr:*)",
+      "Bash(ls node_modules/@google/adk/dist/*.d.ts)",
+      "Bash(grep -r runAsync node_modules/@google/adk/dist/types/tools/*.d.ts)",
+      "Bash(npm view:*)",
+      "Bash(npm outdated:*)",
+      "Bash(npm install:*)",
+      "Bash(git merge:*)"
+    ]
+  }
+}
