@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acb26c98-d9fd-411c-8c32-3f121bd63230" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="acb26c98-d9fd-411c-8c32-3f121bd63230" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,12 +24,22 @@
     &quot;assignee&quot;: &quot;YagoLopez&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/YagoLopez/adk-utils.git&quot;,
-    &quot;accountId&quot;: &quot;7b3e3dca-054f-4627-840f-b32255aed16e&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/YagoLopez/adk-utils.git",
+    "accountId": "7b3e3dca-054f-4627-840f-b32255aed16e"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "YagoLopez",
+    "repository": "adk-utils"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -48,7 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "bump-deps",
+    "git-widget-placeholder": "#5 on bump-deps",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -64,7 +70,7 @@
     "ts.external.directory.path": "C:\\Users\\Yago\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
   }
 }]]></component>
-  <component name="RunManager" selected="npm.release:dry-run">
+  <component name="RunManager" selected="npm.release:publish">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -117,11 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.release:publish" />
         <item itemvalue="npm.release:dry-run" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.release:publish" />
       </list>
     </recent_temporary>
   </component>
@@ -139,7 +145,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Remove `.idea/workspace.xml` from version control&#10;&#10;Deleted the IDE-specific `.idea/workspace.xml` file to avoid committing user-specific configuration files. This improves repository cleanliness and prevents potential conflicts in development environments." />
     <MESSAGE value="Update dependencies and add new peer modules  &#10;&#10;Upgraded several dependencies including `@google/adk` to v0.6.0, `ai` to v6.0.140, and `@ai-sdk/gateway` to v3.0.82. Added new peer modules such as `express` and related dependencies to enhance functionality. Adjustments ensure compatibility and introduce new features." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update dependencies and add new peer modules  &#10;&#10;Upgraded several dependencies including `@google/adk` to v0.6.0, `ai` to v6.0.140, and `@ai-sdk/gateway` to v3.0.82. Added new peer modules such as `express` and related dependencies to enhance functionality. Adjustments ensure compatibility and introduce new features." />
+    <MESSAGE value="Switch to `commit-and-tag-version` and update dependencies&#10;&#10;Replaced `standard-version` with `commit-and-tag-version` for release management in `package.json` scripts. Updated dependencies and added overrides for enhanced security and compatibility. Cleaned up unnecessary modules and optimized the lock file for improved maintainability." />
+    <option name="LAST_COMMIT_MESSAGE" value="Switch to `commit-and-tag-version` and update dependencies&#10;&#10;Replaced `standard-version` with `commit-and-tag-version` for release management in `package.json` scripts. Updated dependencies and added overrides for enhanced security and compatibility. Cleaned up unnecessary modules and optimized the lock file for improved maintainability." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
