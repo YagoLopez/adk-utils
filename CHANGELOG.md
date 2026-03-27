@@ -1,6 +1,8 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [0.2.7](https://github.com/YagoLopez/adk-utils/compare/v0.2.6...v0.2.7) (2026-03-27)
 
 ### [0.2.6](https://github.com/YagoLopez/adk-utils/compare/v0.2.5...v0.2.6) (2026-03-23)
 
