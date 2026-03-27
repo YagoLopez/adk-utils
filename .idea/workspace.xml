@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acb26c98-d9fd-411c-8c32-3f121bd63230" name="Changes" comment="" />
+    <list default="true" id="acb26c98-d9fd-411c-8c32-3f121bd63230" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,7 +149,8 @@
     <MESSAGE value="Remove `.idea/workspace.xml` from version control&#10;&#10;Deleted the IDE-specific `.idea/workspace.xml` file to avoid committing user-specific configuration files. This improves repository cleanliness and prevents potential conflicts in development environments." />
     <MESSAGE value="Update dependencies and add new peer modules  &#10;&#10;Upgraded several dependencies including `@google/adk` to v0.6.0, `ai` to v6.0.140, and `@ai-sdk/gateway` to v3.0.82. Added new peer modules such as `express` and related dependencies to enhance functionality. Adjustments ensure compatibility and introduce new features." />
     <MESSAGE value="Switch to `commit-and-tag-version` and update dependencies&#10;&#10;Replaced `standard-version` with `commit-and-tag-version` for release management in `package.json` scripts. Updated dependencies and added overrides for enhanced security and compatibility. Cleaned up unnecessary modules and optimized the lock file for improved maintainability." />
-    <option name="LAST_COMMIT_MESSAGE" value="Switch to `commit-and-tag-version` and update dependencies&#10;&#10;Replaced `standard-version` with `commit-and-tag-version` for release management in `package.json` scripts. Updated dependencies and added overrides for enhanced security and compatibility. Cleaned up unnecessary modules and optimized the lock file for improved maintainability." />
+    <MESSAGE value="Update `.idea/workspace.xml` configuration for consistency&#10;&#10;Removed redundant change list entries and adjusted GitHub pull request settings for better alignment with the project. Updated run configurations and cleaned up placeholders and version control messages to improve maintainability." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update `.idea/workspace.xml` configuration for consistency&#10;&#10;Removed redundant change list entries and adjusted GitHub pull request settings for better alignment with the project. Updated run configurations and cleaned up placeholders and version control messages to improve maintainability." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
